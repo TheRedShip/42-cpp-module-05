@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.h"
+#include "Bureaucrat.hpp"
 
 int	main(void)
 {

@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.h"
+#include "Form.hpp"
 
-std::ostream &operator<<(std::ostream &o, const Bureaucrat &rhs)
+std::ostream &operator<<(std::ostream &o, const Form &rhs)
 {
 	o << rhs.get_name() << " form, need " << rhs.get_grade_signed() << " to signed and " << rhs.get_grade_executed() << " to be executed";
 	return o;
@@ -72,6 +72,12 @@ void	Form::beSigned(Bureaucrat &b)
 {
 	if (b.get_grade() > this->_grade_signed)
 		throw Form::GradeTooLowException();
-	this->_signed = true;
+	else if (this->_signed == false)
+	{
+		this->_signed = true;
+		std::cout << "SUCESS: " << "(" << b << ") signed (" << *this << ")" << std::endl;
+	}
+	else
+		std::cout << b << " couldn't sign " << *this << " because it is already signed" << std::endl;
 }
 

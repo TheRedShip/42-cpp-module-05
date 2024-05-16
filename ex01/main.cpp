@@ -10,25 +10,30 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.h"
+#include "Bureaucrat.hpp"
 
 int	main(void)
 {
-	try {
-		Bureaucrat b("Emile Stelewells", 50);
-		b.decrement_grade();
-		b.decrement_grade();
-		b.decrement_grade();
-		b.increment_grade();
-		std::cout << b << std::endl;
-	} catch (const std::exception& e) {
-		std::cerr << "Caught an exception: " << e.what() << std::endl;
+	Bureaucrat	little_boss("little_boss", 100);
+	Bureaucrat	big_boss("big_boss", 1);
+	Form		paper("paper_1", 5, 5);
+
+	std::cout << paper << std::endl;
+	std::cout << little_boss << std::endl;
+	try { //ERROR
+		little_boss.signForm(paper);
+	} catch (Form::GradeTooLowException &e) {
+		std::cerr << "ERROR : Caught an exception: " << e.what() << std::endl;
 	}
-	try {
-		Bureaucrat b("John Doe", 151);
-		std::cout << b << std::endl;
-	} catch (const std::exception& e) {
-		std::cerr << "Caught an exception: " << e.what() << std::endl;
+	try { //no error
+		big_boss.signForm(paper);
+	} catch (Form::GradeTooLowException &e) {
+		std::cerr << "ERROR : Caught an exception: " << e.what() << std::endl;
+	}
+	try { //ERROR
+		Form	wrong_paper("wrong_paper", -1, 10);
+	} catch (Form::GradeTooHighException &e) {
+		std::cerr << "ERROR : Caught an exception: " << e.what() << std::endl;
 	}
 	return 0;
 }

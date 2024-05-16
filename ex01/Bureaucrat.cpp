@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.h"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade)
 {
@@ -67,4 +67,9 @@ void	Bureaucrat::decrement_grade()
 	if (this->_grade == 150)
 		throw std::out_of_range("Grade cannot be decremented");
 	this->_grade++;
+}
+
+void	Bureaucrat::signForm(const Form &form)
+{
+	form.beSigned(*this);
 }
