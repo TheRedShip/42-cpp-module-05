@@ -6,14 +6,14 @@
 /*   By: ycontre <ycontre@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 15:22:01 by ycontre           #+#    #+#             */
-/*   Updated: 2024/05/15 16:46:32 by ycontre          ###   ########.fr       */
+/*   Updated: 2024/05/15 16:00:14 by ycontre          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_H
 # define BUREAUCRAT_H
 
-#include <iostream>
+# include <iostream>
 # include <string>
 # include <stdexcept>
 
@@ -34,6 +34,17 @@ class Bureaucrat
 
 		void		increment_grade();
 		void		decrement_grade();
+
+		class GradeTooLowException : std::exception
+		{
+			public:
+				virtual const char *what(void) const throw();
+		};
+		class GradeTooHighException : std::exception
+		{
+			public:
+				virtual const char *what(void) const throw();
+		};
 };
 
 std::ostream &operator<<(std::ostream &o, const Bureaucrat &rhs);

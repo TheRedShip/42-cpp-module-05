@@ -21,24 +21,24 @@ class Bureaucrat;
 
 class Form
 {
-	protected:
+	private:
 		const std::string	_name;
 		const int			_grade_signed;
 		const int			_grade_executed;
 		bool				_signed;
 
-		Form(std::string name, int _grade_signed, int _grade_executed);
 	public:
 		virtual ~Form();
 		Form(const Form &src);
 		Form &operator=(const Form &rhs);
+		Form(std::string name, int _grade_signed, int _grade_executed);
 
 		std::string	get_name() const;
 		bool		get_signed() const;
 		int			get_grade_signed() const;
 		int			get_grade_executed() const;
 
-		void		beSigned(Bureaucrat &b);
+		void		beSigned(Bureaucrat const &b);
 			
 		class GradeTooLowException : std::exception
 		{

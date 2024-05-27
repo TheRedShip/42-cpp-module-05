@@ -38,7 +38,18 @@ class Bureaucrat
 		void		increment_grade();
 		void		decrement_grade();
 
-		void		signForm(const Form &form);
+		void		signForm(Form &form);
+
+		class GradeTooLowException : std::exception
+		{
+			public:
+				virtual const char *what(void) const throw();
+		};
+		class GradeTooHighException : std::exception
+		{
+			public:
+				virtual const char *what(void) const throw();
+		};
 };
 
 std::ostream &operator<<(std::ostream &o, const Bureaucrat &rhs);

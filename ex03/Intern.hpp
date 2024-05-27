@@ -21,8 +21,6 @@
 
 class Intern
 {
-	private:
-		Form	*_forms[3];
 	public:
 		Intern();
 		~Intern();

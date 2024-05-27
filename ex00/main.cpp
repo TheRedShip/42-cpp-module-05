@@ -27,7 +27,7 @@ int	main(void)
 	try {
 		Bureaucrat b("John Doe", 151);
 		std::cout << b << std::endl;
-	} catch (const std::exception& e) {
+	} catch (const Bureaucrat::GradeTooLowException& e) {
 		std::cerr << "Caught an exception: " << e.what() << std::endl;
 	}
 	return 0;
