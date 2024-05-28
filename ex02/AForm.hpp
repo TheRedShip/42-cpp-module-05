@@ -43,17 +43,17 @@ class Form
 		virtual void	execute(Bureaucrat const &executor) const = 0;
 		virtual void	action(void) const = 0;
 			
-		class GradeTooLowException : std::exception
+		class GradeTooLowException : public std::exception
 		{
 			public:
 				virtual const char *what(void) const throw();
 		};
-		class GradeTooHighException : std::exception
+		class GradeTooHighException : public std::exception
 		{
 			public:
 				virtual const char *what(void) const throw();
 		};
-		class FormNotSignedException : std::exception
+		class FormNotSignedException : public std::exception
 		{
 			public:
 				virtual const char *what(void) const throw();

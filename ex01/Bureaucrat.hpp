@@ -40,12 +40,12 @@ class Bureaucrat
 
 		void		signForm(Form &form);
 
-		class GradeTooLowException : std::exception
+		class GradeTooLowException : public std::exception
 		{
 			public:
 				virtual const char *what(void) const throw();
 		};
-		class GradeTooHighException : std::exception
+		class GradeTooHighException : public std::exception
 		{
 			public:
 				virtual const char *what(void) const throw();

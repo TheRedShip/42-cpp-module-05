@@ -15,7 +15,7 @@
 
 # include <iostream>
 # include <string>
-# include <stdexcept>
+# include <exception>
 
 class Bureaucrat
 {
@@ -35,12 +35,12 @@ class Bureaucrat
 		void		increment_grade();
 		void		decrement_grade();
 
-		class GradeTooLowException : std::exception
+		class GradeTooLowException : public std::exception
 		{
 			public:
 				virtual const char *what(void) const throw();
 		};
-		class GradeTooHighException : std::exception
+		class GradeTooHighException : public std::exception
 		{
 			public:
 				virtual const char *what(void) const throw();
